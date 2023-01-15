@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Movie Search',
+      title: 'Search & Chill',
       theme: ThemeData(
+        fontFamily: 'Outfit',
         primarySwatch: Colors.blue, // TODO : change this
       ),
       home: const LoginOrSignUpPage(),
