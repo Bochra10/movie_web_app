@@ -125,6 +125,7 @@ class _LoginOrSignUpPageState extends State<LoginOrSignUpPage> {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 40),
                           child: TextField(
+                              style: const TextStyle(color: AppColors.white),
                               decoration: InputDecoration(
                                   labelText: 'Enter here your username',
                                   labelStyle: const TextStyle(
