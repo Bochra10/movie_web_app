@@ -14,8 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Search & Chill',
-      theme:
-          ThemeData(fontFamily: 'Outfit', backgroundColor: AppColors.primary),
+      theme: ThemeData(
+          fontFamily: 'Outfit',
+          primaryColor: AppColors.primary,
+          backgroundColor: AppColors.primary),
       home: const LoginOrSignUpPage(),
     );
   }
