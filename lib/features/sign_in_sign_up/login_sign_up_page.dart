@@ -1,28 +1,94 @@
 import 'package:flutter/material.dart';
 import 'package:movie_web_app/shared/colors.dart';
 
-class LoginOrSignUpPage extends StatelessWidget {
+class LoginOrSignUpPage extends StatefulWidget {
   const LoginOrSignUpPage({super.key});
 
+  @override
+  State<LoginOrSignUpPage> createState() => _LoginOrSignUpPageState();
+}
+
+class _LoginOrSignUpPageState extends State<LoginOrSignUpPage> {
+  bool passwordHidden = true;
+  bool newLogin = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: [
-        Image.asset(
-          'assets/images/login_background.png',
-          width: double.infinity,
-          fit: BoxFit.fitWidth,
-        ),
+        Image.asset('assets/images/login_background.png',
+            width: double.infinity, fit: BoxFit.fitWidth),
         Positioned(
-          bottom: -90,
-          left: 0,
-          right: 0,
-          child: Image.asset(
-            'assets/images/vector.png',
-            width: double.infinity,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
+            bottom: -90,
+            left: 0,
+            right: 0,
+            child: Image.asset('assets/images/vector.png',
+                width: double.infinity, fit: BoxFit.fitWidth)),
+        Positioned(
+            top: 45,
+            right: 60,
+            child: Container(
+                decoration: BoxDecoration(
+                    color: AppColors.primary,
+                    borderRadius: BorderRadius.circular(20)),
+                width: 166,
+                height: 58,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: (() {
+                          setState(() {
+                            newLogin = !newLogin;
+                          });
+                        }),
+                        child: Container(
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: newLogin
+                                    ? AppColors.primary
+                                    : AppColors.secondary),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Center(
+                                child: Text('Login',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: newLogin ? 15 : 28,
+                                        color: newLogin
+                                            ? AppColors.white.withOpacity(0.7)
+                                            : AppColors.white)),
+                              ),
+                            )),
+                      ),
+                      InkWell(
+                        onTap: (() {
+                          setState(() {
+                            newLogin = !newLogin;
+                          });
+                        }),
+                        child: Container(
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: newLogin
+                                    ? AppColors.secondary
+                                    : AppColors.primary),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Center(
+                                child: Text('Sign up',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: newLogin ? 28 : 15,
+                                        color: !newLogin
+                                            ? AppColors.white.withOpacity(0.7)
+                                            : AppColors.white)),
+                              ),
+                            )),
+                      )
+                    ]))),
         Padding(
             padding: const EdgeInsets.symmetric(vertical: 120),
             child: Center(
@@ -41,30 +107,60 @@ class LoginOrSignUpPage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20),
                         child: Image.asset('assets/images/popcorn.png',
                             height: 120),
                       ),
-                      const Text(
-                        'Welcome !', // FIXME : or welcome back
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 40,
-                            color: AppColors.white),
-                      ),
+                      Text(newLogin ? 'Welcome !' : 'Welcome back',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 40,
+                              color: AppColors.white)),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: 580,
-                        child: TextField(
-                            decoration: InputDecoration(
-                                labelText: 'Enter here your username',
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: TextField(
+                              decoration: InputDecoration(
+                                  labelText: 'Enter here your username',
+                                  labelStyle: const TextStyle(
+                                      color: AppColors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400),
+                                  hintText: 'my_username',
+                                  hintStyle: TextStyle(
+                                      color: Colors.white.withOpacity(0.7),
+                                      fontStyle: FontStyle.italic),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                      borderSide: const BorderSide(
+                                          width: 1, color: Colors.white)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(100),
+                                      borderSide: const BorderSide(
+                                          width: 2, color: Colors.white)))),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: 580,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 40),
+                          child: TextField(
+                              obscureText: passwordHidden,
+                              obscuringCharacter: '*',
+                              style: const TextStyle(color: AppColors.white),
+                              decoration: InputDecoration(
+                                labelText: 'Enter here your password',
                                 labelStyle: const TextStyle(
                                     color: AppColors.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400),
-                                hintText: 'my_username',
+                                hintText: 'my_password',
                                 hintStyle: TextStyle(
                                     color: Colors.white.withOpacity(0.7),
                                     fontStyle: FontStyle.italic),
@@ -75,16 +171,53 @@ class LoginOrSignUpPage extends StatelessWidget {
                                 focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(100),
                                     borderSide: const BorderSide(
-                                        width: 2, color: Colors.white)))),
+                                        width: 2, color: Colors.white)),
+                                suffixIcon: Padding(
+                                  padding: const EdgeInsets.only(right: 4),
+                                  child: IconButton(
+                                    color: AppColors.white,
+                                    icon: passwordHidden == true
+                                        ? const Icon(Icons.visibility_off)
+                                        : const Icon(Icons.visibility),
+                                    onPressed: () {
+                                      setState(() {
+                                        passwordHidden = !passwordHidden;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              )),
+                        ),
                       ),
-                      const SizedBox(height: 10),
-                      // FlatButton.icon(
-                      //   color: Color(0xFFF37515),
-                      //   textColor: Colors.white,
-                      //   onPressed: () { /* do something */ },
-                      //   icon: Icon(Icons.navigate_next),
-                      //   label: Text('Next'),
-                      // )
+                      const SizedBox(height: 20),
+                      InkWell(
+                          onTap: () {
+                            // TODO : connect or add user
+                          },
+                          child: Container(
+                            width: 120,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColors.secondary),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 4, vertical: 8),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: const [
+                                  Text('Next',
+                                      style: TextStyle(
+                                          color: AppColors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600)),
+                                  Icon(Icons.arrow_forward_ios,
+                                      color: AppColors.white, size: 16)
+                                ],
+                              ),
+                            ),
+                          ))
                     ],
                   ),
                 ),
