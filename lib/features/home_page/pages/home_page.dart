@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:movie_web_app/features/home_page/dummy_data.dart';
 import 'package:movie_web_app/features/home_page/widgets/first_post_card.dart';
 import 'package:movie_web_app/features/home_page/widgets/poster_card.dart';
+import 'package:movie_web_app/features/profile/profile_page.dart';
 import 'package:movie_web_app/features/search/pages/search_page.dart';
+import 'package:movie_web_app/features/sign_in_sign_up/login_sign_up_page.dart';
 import 'package:movie_web_app/features/watch_list/pages/watch_list_page.dart';
-import 'package:movie_web_app/models/chosen_filters.dart';
 import 'package:movie_web_app/models/contents.dart';
 import 'package:movie_web_app/models/filters.dart';
 import 'package:movie_web_app/models/movie.dart';
+import 'package:movie_web_app/models/picked_filters.dart';
+import 'package:movie_web_app/models/user_account.dart';
 import 'package:movie_web_app/shared/colors.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
@@ -20,7 +23,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Movie> movies = [];
-  ChosenFilters pickedFilters = ChosenFilters();
+  PickedFilters pickedFilters = PickedFilters();
 
   List<SwipeItem> swipeItems = <SwipeItem>[];
   MatchEngine _matchEngine = MatchEngine();
@@ -76,7 +79,12 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: ((context) => ProfilePage(
+                                        user: UserAccount(username: 'bochra'),
+                                      ))));
+                            },
                             icon: const Icon(Icons.account_circle_outlined)),
                         IconButton(
                             onPressed: () {
@@ -94,7 +102,13 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.login))
+                  IconButton(
+                      onPressed: () {
+                        // TODO : log out the user
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: ((context) => const LoginOrSignUpPage())));
+                      },
+                      icon: const Icon(Icons.login))
                 ],
               ),
             ),
@@ -118,13 +132,12 @@ class _HomePageState extends State<HomePage> {
                             height: 20,
                             fit: BoxFit.fill,
                           ),
-                          selected: pickedFilters.genres ==
+                          selected: pickedFilters.pickedGenre !=
                               homePageGenres.keys.toList()[index],
                           onSelected: (bool selected) {
                             setState(() {
-                              pickedFilters.genres = selected
-                                  ? homePageGenres.keys.toList()[index]
-                                  : null;
+                              pickedFilters.pickedGenre =
+                                  homePageGenres.keys.toList()[index];
                             });
                           },
                         );

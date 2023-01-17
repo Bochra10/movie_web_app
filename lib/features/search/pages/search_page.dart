@@ -40,7 +40,7 @@ class _SearchPageState extends State<SearchPage> {
               style: const TextStyle(
                   color: Colors.white,
                   fontSize: 14,
-                  fontFamily: 'Roboto',
+                  fontFamily: 'Outfit',
                   fontWeight: FontWeight.w400),
               decoration: const InputDecoration(
                   suffixIcon: Icon(
@@ -53,7 +53,7 @@ class _SearchPageState extends State<SearchPage> {
                   hintStyle: TextStyle(
                       color: Color(0xFF67686D),
                       fontSize: 14,
-                      fontFamily: 'Roboto',
+                      fontFamily: 'Outfit',
                       fontWeight: FontWeight.w400)),
             ),
           ),
@@ -86,7 +86,7 @@ class _SearchPageState extends State<SearchPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset("no-results.png"),
+                          Image.asset("assets/images/no_results.png"),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(

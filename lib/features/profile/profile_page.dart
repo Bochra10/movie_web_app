@@ -19,15 +19,26 @@ class _ProfilePageState extends State<ProfilePage> {
     usernameController.text = widget.user.username;
     languageController.text = widget.user.language ?? '';
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF1D2024),
+        elevation: 0,
+        title: const Text("Profile",
+            style: TextStyle(
+              fontSize: 24,
+              fontFamily: 'Outfit',
+              fontWeight: FontWeight.w700,
+            )),
+      ),
       body: Container(
         color: AppColors.primary,
         width: double.infinity,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircleAvatar(
               backgroundColor: AppColors.secondary.withOpacity(0.9),
-              radius: 60,
+              radius: 80,
               child: Center(
                 child: Text(
                   widget.user.username[0].toUpperCase(),
@@ -38,7 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             SizedBox(
               width: 580,
               child: Padding(
@@ -63,58 +74,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ChoiceChip(
-                  selectedColor: AppColors.secondary,
-                  disabledColor: AppColors.grey,
-                  elevation: 1,
-                  pressElevation: 1.5,
-                  label: const Text('Male',
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400)),
-                  labelPadding:
-                      const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  avatar:
-                      const Icon(Icons.male_rounded, color: AppColors.white),
-                  selected: widget.user.isMale,
-                  onSelected: (bool selected) {
-                    setState(() {
-                      widget.user.isMale = true;
-                    });
-                  },
-                ),
-                const SizedBox(width: 20),
-                ChoiceChip(
-                  selectedColor: AppColors.secondary,
-                  disabledColor: AppColors.grey,
-                  elevation: 1,
-                  pressElevation: 1.5,
-                  label: const Text('Female',
-                      style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w400)),
-                  labelPadding:
-                      const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                  avatar:
-                      const Icon(Icons.female_rounded, color: AppColors.white),
-                  selected: !widget.user.isMale,
-                  onSelected: (bool selected) {
-                    setState(() {
-                      widget.user.isMale = false;
-                    });
-                  },
-                )
-              ],
-            ),
             const SizedBox(height: 20),
             SizedBox(
               width: 580,
@@ -141,38 +100,46 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             const SizedBox(height: 20),
-            InkWell(
-                onTap: () {
-                  widget.user.username = usernameController.text;
-                  widget.user.language = languageController.text;
-                  const snackBar = SnackBar(
-                    content: Text('Account updated !'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                },
-                child: Container(
-                  width: 120,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.secondary),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        Text('Save',
-                            style: TextStyle(
-                                color: AppColors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600)),
-                        Icon(Icons.arrow_forward_ios,
-                            color: AppColors.white, size: 16)
-                      ],
-                    ),
-                  ),
-                ))
+            SizedBox(
+              width: 480,
+              child: Expanded(
+                child: InkWell(
+                    onTap: () {
+                      widget.user.username = usernameController.text;
+                      widget.user.language = languageController.text;
+                      // TODO : here update the user username
+                      const snackBar = SnackBar(
+                        content: Text('Account updated !'),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 120,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.secondary),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text('Save',
+                                style: TextStyle(
+                                    color: AppColors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600)),
+                            SizedBox(width: 16),
+                            Icon(Icons.arrow_forward_ios,
+                                color: AppColors.white, size: 16)
+                          ],
+                        ),
+                      ),
+                    )),
+              ),
+            )
           ],
         ),
       ),

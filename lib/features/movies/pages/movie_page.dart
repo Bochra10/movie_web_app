@@ -141,7 +141,7 @@ class _MoviePageState extends State<MoviePage> {
                                     : AppColors.secondary),
                             child: Text(
                                 isWatchList
-                                    ? "Added click to remove"
+                                    ? "Added! Click to remove"
                                     : "My List +",
                                 style: theme.textTheme.button),
                           ),

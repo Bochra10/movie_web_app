@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_web_app/features/home_page/pages/home_page.dart';
 import 'package:movie_web_app/shared/colors.dart';
 
 class LoginOrSignUpPage extends StatefulWidget {
@@ -194,6 +195,8 @@ class _LoginOrSignUpPageState extends State<LoginOrSignUpPage> {
                       InkWell(
                           onTap: () {
                             // TODO : connect or add user
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: ((context) => const HomePage())));
                           },
                           child: Container(
                             width: 120,
