@@ -197,6 +197,14 @@ class _LoginOrSignUpPageState extends State<LoginOrSignUpPage> {
                             // TODO : connect or add user
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: ((context) => const HomePage())));
+                            newLogin
+                                ? ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text("Happy to have you!")))
+                                : ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content:
+                                            Text("Glad to see you back!")));
                           },
                           child: Container(
                             width: 120,

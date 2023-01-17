@@ -6,6 +6,7 @@ class Themedata {
     return ThemeData(
         scaffoldBackgroundColor: AppColors.primary,
         primaryColor: Colors.white,
+        fontFamily: 'Outfit',
         iconTheme: const IconThemeData(
           color: AppColors.secondary,
         ),
