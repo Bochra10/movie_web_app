@@ -19,6 +19,7 @@ class _RecommandationPageState extends State<RecommandationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: const Color(0xFF1D2024), elevation: 0),
       body: Container(
         decoration: const BoxDecoration(color: AppColors.primary),
         child: Padding(

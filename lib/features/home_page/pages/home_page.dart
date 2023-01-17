@@ -3,6 +3,7 @@ import 'package:movie_web_app/features/home_page/dummy_data.dart';
 import 'package:movie_web_app/features/home_page/widgets/first_post_card.dart';
 import 'package:movie_web_app/features/home_page/widgets/poster_card.dart';
 import 'package:movie_web_app/features/profile/profile_page.dart';
+import 'package:movie_web_app/features/recommandation/recommandation_page.dart';
 import 'package:movie_web_app/features/search/pages/search_page.dart';
 import 'package:movie_web_app/features/sign_in_sign_up/login_sign_up_page.dart';
 import 'package:movie_web_app/features/watch_list/pages/watch_list_page.dart';
@@ -99,6 +100,13 @@ class _HomePageState extends State<HomePage> {
                                   builder: ((context) => const SearchPage())));
                             },
                             icon: const Icon(Icons.search)),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: ((context) =>
+                                      const RecommandationPage())));
+                            },
+                            icon: const Icon(Icons.recommend_outlined))
                       ],
                     ),
                   ),
