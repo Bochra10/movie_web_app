@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_web_app/features/home_page/pages/home_page.dart';
 import 'package:movie_web_app/features/profile/profile_page.dart';
 import 'package:movie_web_app/features/sign_in_sign_up/login_sign_up_page.dart';
+import 'package:movie_web_app/features/watch_list/bloc/watch_list_bloc.dart';
 import 'package:movie_web_app/models/user_account.dart';
 import 'package:movie_web_app/shared/colors.dart';
+import 'package:movie_web_app/shared/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +18,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Search & Chill',
-      theme: ThemeData(
-          fontFamily: 'Outfit',
-          primaryColor: AppColors.primary,
-          backgroundColor: AppColors.primary),
-      home: ProfilePage(
-        user: UserAccount(username: 'bochra', isMale: false),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => WatchListBloc()..add(WatchListStarted()))
+      ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Search & Chill',
+          theme: Themedata.getTheme(),
+          home: const HomePage()),
     );
   }
 }

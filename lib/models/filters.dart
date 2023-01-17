@@ -27,3 +27,10 @@ const List<String> languagesChoices = [
   'German'
 ];
 const List<String> durationChoices = ['<60mn', '60-120mn', '>120mn'];
+const Map<String, String> homePageGenres = {
+  "All": "assets/images/popcorn.png",
+  "Comedy": "assets/images/comedy.png",
+  "Drama": "assets/images/drama.png",
+  "Horror": "assets/images/horror.png",
+  "Romance": "assets/images/romance.png"
+};
