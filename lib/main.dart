@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_web_app/features/profile/profile_page.dart';
 import 'package:movie_web_app/features/sign_in_sign_up/login_sign_up_page.dart';
+import 'package:movie_web_app/models/user_account.dart';
 import 'package:movie_web_app/shared/colors.dart';
 
 void main() {
@@ -19,7 +21,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Outfit',
           primaryColor: AppColors.primary,
           backgroundColor: AppColors.primary),
-      home: const LoginOrSignUpPage(),
+      home: ProfilePage(
+        user: UserAccount(username: 'bochra', isMale: false),
+      ),
     );
   }
 }

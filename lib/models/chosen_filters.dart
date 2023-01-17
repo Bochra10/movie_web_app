@@ -1,4 +1,4 @@
-import 'package:movie_web_app/features/recommandation/models/filters.dart';
+import 'package:movie_web_app/models/filters.dart';
 
 class ChosenFilters {
   bool? isAgeApproriate = isAgeApproriateChoices[0];

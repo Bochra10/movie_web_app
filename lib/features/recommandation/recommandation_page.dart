@@ -1,8 +1,8 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
-import 'package:movie_web_app/features/recommandation/models/chosen_filters.dart';
-import 'package:movie_web_app/features/recommandation/models/filters.dart';
+import 'package:movie_web_app/models/chosen_filters.dart';
+import 'package:movie_web_app/models/filters.dart';
 import 'package:movie_web_app/shared/colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart'
     show AnimatedTextKit, TypewriterAnimatedText;
