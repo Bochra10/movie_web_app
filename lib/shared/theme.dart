@@ -49,10 +49,9 @@ class Themedata {
           ),
         ),
         chipTheme: const ChipThemeData(
-            selectedColor: Color.fromARGB(255, 62, 100, 149),
-            disabledColor: AppColors.secondary,
+            selectedColor: AppColors.secondary,
+            disabledColor: AppColors.grey,
             showCheckmark: false,
-            backgroundColor: AppColors.secondary,
             labelStyle: TextStyle(
               color: Colors.white,
               fontSize: 18,

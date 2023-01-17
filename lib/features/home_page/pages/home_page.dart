@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage> {
                             height: 20,
                             fit: BoxFit.fill,
                           ),
-                          selected: pickedFilters.pickedGenre !=
+                          selected: pickedFilters.pickedGenre ==
                               homePageGenres.keys.toList()[index],
                           onSelected: (bool selected) {
                             setState(() {

@@ -165,19 +165,24 @@ class _RecommandationPageState extends State<RecommandationPage> {
                 ).toList(),
               ),
               const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                    color: AppColors.secondary.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10)),
-                width: double.infinity,
-                height: 34,
-                child: TextButton(
-                    onPressed: (() {}),
-                    child: const Text('Submit',
+              InkWell(
+                onTap: (() {
+                  // TODO : give recommandation
+                }),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: AppColors.secondary.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10)),
+                  width: double.infinity,
+                  height: 34,
+                  child: const Center(
+                    child: Text('Submit',
                         style: TextStyle(
                             color: AppColors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600))),
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600)),
+                  ),
+                ),
               ),
               const SizedBox(height: 18),
               Expanded(
